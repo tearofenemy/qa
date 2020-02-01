@@ -10,6 +10,7 @@ $factory->define(Question::class, function (Faker $faker) {
         'body' => $faker->paragraphs(rand(1, 3), true),
         'views' => rand(10, 15),
         'answers' => rand(10, 15),
-        'votes' => rand(-5, 10)
+        'votes' => rand(-5, 10),
+        'user_id' => 1
     ];
 });
