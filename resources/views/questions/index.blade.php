@@ -8,7 +8,7 @@
                 <div class="card-header">All Questions</div>
 
                 <div class="card-body">
-                   @foreach ($questions as $question)
+                    @foreach ($questions as $question)
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="mt-0">{{ $question->title }}</h3>
@@ -16,8 +16,7 @@
                             </div>                        
                         </div>
                         <hr>
-                   @endforeach
-
+                    @endforeach
                     <div class="mx-auto">
                         {{ $questions->links() }}
                     </div>
