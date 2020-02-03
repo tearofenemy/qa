@@ -11942,9 +11942,31 @@ a.text-dark:focus {
   text-align: center;
 }
 
+.counters strong {
+  font-size: 2em;
+  display: block;
+}
+
 .counters .votes {
   width: 60px;
   height: 60px;
-  border: 1px solid red;
+}
+
+.counters .status.unanswered {
+  background: none;
+}
+
+.counters .status.answered {
+  color: #5fbb7e;
+  border: 1px solid #5fbb7e;
+}
+
+.counters .status.accepted-answer {
+  color: #fff;
+  background: #5fbb7e;
+}
+
+.counters .views {
+  margin-top: 10px;
 }
 

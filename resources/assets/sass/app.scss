@@ -13,9 +13,28 @@
     margin-right: 30px;
     font-size: 10px;
     text-align: center;
+    strong {
+        font-size: 2em;
+        display: block;
+    }
     .votes {
         width: 60px;
         height: 60px;
-        border: 1px solid red;
+    }
+    .status {
+        &.unanswered {
+            background: none;
+        }
+        &.answered {
+            color: $color-green;
+            border: 1px solid $color-green;
+        }
+        &.accepted-answer {
+            color: $color-white;
+            background: $color-green;
+        }
+    }
+    .views {
+        margin-top: 10px;
     }
 }
