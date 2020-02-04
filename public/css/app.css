@@ -11970,3 +11970,7 @@ a.text-dark:focus {
   margin-top: 10px;
 }
 
+form.form-delete {
+  display: inline;
+}
+
