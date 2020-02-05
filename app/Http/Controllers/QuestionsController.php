@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AskQuestionRequest;
 use App\Question;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class QuestionsController extends Controller
 {
@@ -66,7 +64,10 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        return view('questions.edit', compact('question'));
+        if (\Gate::allows('update-question', $question)) {
+            return view('questions.edit', compact('question'));
+        }
+        abort(403, 'Access denied');
     }
 
     /**
@@ -78,6 +79,7 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+
         $question->update($request->only('title', 'body'));
 
         return redirect('/questions')->with('success', 'Your question was successfully updated.');
@@ -91,6 +93,10 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+
+        if (\Gate::denies('delete-question', $question)) {
+            abort(403, 'Access denied');
+        }
         $question->delete();
 
         return redirect()->back()->with('success', "Question was successfully deleted.");
