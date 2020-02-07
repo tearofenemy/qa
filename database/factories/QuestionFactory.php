@@ -9,7 +9,7 @@ $factory->define(Question::class, function (Faker $faker) {
         'slug' => str_slug($faker->sentence(rand(1, 2))),
         'body' => $faker->paragraphs(rand(1, 3), true),
         'views' => rand(10, 15),
-        'answers' => rand(10, 15),
+        //'answers_count' => rand(10, 15),
         'votes' => rand(-5, 10),
         'user_id' => 1
     ];
