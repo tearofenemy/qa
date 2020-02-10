@@ -11974,3 +11974,53 @@ form.form-delete {
   display: inline;
 }
 
+.vote-controls {
+  margin-left: 5px;
+  margin-right: 23px;
+  padding: 0;
+  margin-top: -5px;
+  text-align: center;
+  color: grey;
+}
+
+.vote-controls span,
+.vote-controls a {
+  display: block;
+}
+
+.vote-controls span.votes-count {
+  font-size: 25px;
+}
+
+.vote-controls span.favorites-count {
+  font-size: 20px;
+}
+
+.vote-controls a {
+  cursor: pointer;
+  color: grey;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.vote-controls a.off:hover {
+  color: red;
+}
+
+.vote-controls a.top:hover {
+  color: green;
+}
+
+.vote-controls a.favorite {
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.vote-controls a.favorite .favorited:hover {
+  color: rgba(255, 255, 0, 0.89);
+}
+
+.vote-controls a.vote-accept {
+  color: green;
+}
+
