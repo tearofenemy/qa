@@ -26,8 +26,8 @@
                             <a title="This question us useless" class="vote-down off">
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
-                            <a title="Mark this question as best answer" class="vote-accept mt-2">
-                                <i class="fa fa-check fa-2x"></i>
+                            <a title="Mark this question as best answer" class="favorite favorited mt-2">
+                                <i class="fa fa-star fa-2x"></i>
                             </a>
                         </div>
                         <div class="media-body">
@@ -54,5 +54,6 @@
         'answers' => $question->answers,
         'answersCount' => $question->answers_count
     ])
+    @include('answers._create')
 </div>
 @endsection

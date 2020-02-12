@@ -12011,13 +12011,8 @@ form.form-delete {
   color: green;
 }
 
-.vote-controls a.favorite {
-  -webkit-transition: all .25s ease-in-out;
-  transition: all .25s ease-in-out;
-}
-
-.vote-controls a.favorite .favorited:hover {
-  color: rgba(255, 255, 0, 0.89);
+.vote-controls a.favorited:hover {
+  color: #f0f000;
 }
 
 .vote-controls a.vote-accept {

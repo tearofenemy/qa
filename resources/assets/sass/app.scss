@@ -72,11 +72,8 @@ form.form-delete {
         &.top:hover {
             color: green;
         }
-        &.favorite {
-            transition: all .25s ease-in-out;
-            .favorited:hover {
-                color: rgba(255, 255, 0, 0.89);
-            }
+        &.favorited:hover {
+            color: darken($color: yellow, $amount: 3)
         }
         &.vote-accept {
             color: green;
