@@ -25,10 +25,11 @@ class Question extends Model
         $this->attributes['slug'] = str_slug($value);
     }
 
-    public function getRouteKeyName()
+    /*public function getRouteKeyName()
     {
         return 'slug';
     }
+    */
 
     public function getUrlAttribute()
     {

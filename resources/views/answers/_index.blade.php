@@ -25,6 +25,23 @@
                             </div>
                             <div class="media-body">
                                 {!! $answer->body_html !!}
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="ml-auto">
+                                            @can ('update', $answer)
+                                                <a href="{{ route('questions.answers.edit', [$question->id, $answer->id]) }}" class="btn btn-outline-primary">Edit</a>
+                                            @endcan
+                                            
+                                            @can ('delete', $answer)
+                                                <form action="{{ route('questions.answers.destroy', [$question->id, $answer->id]) }}" class="form-delete" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you shure to delete?')">Delete</button>
+                                                </form>
+                                            @endcan
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="float-right">
                                     <span class="text-muted">Answered <strong>{{ $answer->created_date }}</strong></span>
                                     <div class="media mt-2">
