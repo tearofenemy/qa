@@ -10,7 +10,7 @@
                             <h1>Edit answer for question: <strong>{{ $question->title }}</strong></h1>
                         </div>
                         <hr>
-                        <form action="{{ route('questions.answers.update', [$question->id, $answer->id]) }}" method="POST">
+                        <form action="{{ route('questions.answers.update', [$question->slug, $answer->id]) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">

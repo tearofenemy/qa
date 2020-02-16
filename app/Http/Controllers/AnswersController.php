@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AnswersController extends Controller
 {
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -71,8 +69,12 @@ class AnswersController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Answer $answer)
+    public function destroy(Question $question, Answer $answer)
     {
-        $this->authorize('delete');
+        $this->authorize('delete', $answer);
+
+        $answer->delete();
+
+        return redirect()->route('questions.show', $question->slug)->with('success', 'Your answer was successfully deleted.');
     }
 }
