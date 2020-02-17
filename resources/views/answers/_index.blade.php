@@ -19,14 +19,22 @@
                             <a title="This question us useless" class="vote-down off">
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
-                            <a title="Mark this question as best answer" 
+                            @can('accept', $answer)
+                                <a title="Mark this question as best answer" 
                                     class="{{ $answer->status }} mt-2"
                                     onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();">
                                 <i class="fa fa-check fa-2x"></i>
-                            </a>
-                            <form action="{{ route('answer.accept', $answer->id) }}" method="POST" id="accept-answer-{{ $answer->id }}">
-                                @csrf
-                            </form>
+                                </a>
+                                <form action="{{ route('answer.accept', $answer->id) }}" method="POST" id="accept-answer-{{ $answer->id }}">
+                                    @csrf
+                                </form>
+                            @else    
+                                @if ($answer->is_best) 
+                                    <a title="Mark this question as best answer" class="{{ $answer->status }} mt-2">
+                                        <i class="fa fa-check fa-2x"></i>
+                                    </a>
+                                @endif
+                            @endcan
                         </div>
                         <div class="media-body">
                             {!! $answer->body_html !!}
