@@ -12003,6 +12003,14 @@ form.form-delete {
   transition: all 0.25s ease-in-out;
 }
 
+.vote-controls a.off {
+  color: #c2c1be;
+}
+
+.vote-controls a.favorited {
+  color: #e3d734;
+}
+
 .vote-controls a.off:hover {
   color: red;
 }

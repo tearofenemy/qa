@@ -1,11 +1,12 @@
 <?php
 
-use App\Answer;
 use Illuminate\Database\Seeder;
-use App\Question;
 use App\User;
+use App\Question;
+use App\Answer;
+use Illuminate\Support\Facades\DB;
 
-class QuestionSeeder extends Seeder
+class UsersQuestionsAnswersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,11 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('answers')->delete();
+        DB::table('questions')->delete();
+        DB::table('users')->delete();
+
         factory(User::class, 3)->create()->each(function ($u) {
             $u->questions()
                 ->saveMany(

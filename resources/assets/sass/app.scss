@@ -65,6 +65,12 @@ form.form-delete {
     a {
         cursor: pointer;
         color: grey;
+        &.off {
+            color: rgb(194, 193, 190);
+        }
+        &.favorited {
+            color: rgb(227, 215, 52);
+        }
         transition: all 0.25s ease-in-out;
         &.off:hover {
             color: red;

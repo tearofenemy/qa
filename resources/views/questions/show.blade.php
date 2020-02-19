@@ -26,9 +26,19 @@
                             <a title="This question us useless" class="vote-down off">
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
-                            <a title="Mark this question as best answer" class="favorite favorited mt-2">
-                                <i class="fa fa-star fa-2x"></i>
+                            <a title="Mark this question as best answer" 
+                                class="mt-2 {{ \Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' : '')  }}"
+                                onclick="event.preventDefault(); document.getElementById('favorite-question-{{ $question->id }}').submit();">
+                                <i class="fa fa-star fa-2x">
+                                </i>
+                                <span>{{ $question->favorites_count }}</span>
                             </a>
+                            <form id="favorite-question-{{ $question->id }}" action="/questions/{{ $question->slug }}/favorites" method="POST" style="display:none;">
+                                @csrf
+                                @if ($question->is_favorited)
+                                    @method('DELETE')
+                                @endif
+                            </form>
                         </div>
                         <div class="media-body">
                             {!! $question->body_html !!}
