@@ -18,6 +18,11 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
+    public function votes()
+    {
+        return $this->morphToMany(User::class, 'votables');
+    }
+
     public function getBodyHtmlAttribute()
     {
         return \Parsedown::instance()->text($this->body);
@@ -40,7 +45,7 @@ class Answer extends Model
             $question = $answer->question;
             $question->decrement('answers_count');
             if ($question->best_answer_id === $answer->id) {
-                $question->best_answer_id = NULL;
+                $question->best_answer_id = null;
                 $question->save();
             }
         });

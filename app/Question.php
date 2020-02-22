@@ -24,6 +24,11 @@ class Question extends Model
         return $this->belongsToMany(User::class, 'favorites');
     }
 
+    public function votes()
+    {
+        return $this->morphToMany(User::class, 'votables');
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -80,5 +85,15 @@ class Question extends Model
     public function getFavoritesCountAttribute()
     {
         return $this->favorites->count();
+    }
+
+    public function upVote()
+    {
+        return $this->votes()->wherePivot('vote', 1);
+    }
+
+    public function downVote()
+    {
+        return $this->votes()->wherePivot('vote', -1);
     }
 }
