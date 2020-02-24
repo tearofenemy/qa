@@ -10,15 +10,27 @@
                 @foreach ($answers as $answer)
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a title="This question is useful" class="vote-up top">
+                            <a title="This answer is useful" 
+                                class="vote-up top"
+                                onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit();">
                                 <i class="fa fa-caret-up fa-3x"></i>
                             </a>
+                            <form action="/answers/{{ $answer->id }}/vote" method="POST" id="up-vote-answer-{{ $answer->id }}">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
                             <span class="votes-count">
-                                123
+                                {{ $answer->votes_count }}
                             </span>
-                            <a title="This question us useless" class="vote-down off">
+                            <a title="This answer us useless" 
+                                class="vote-down off"
+                                onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $answer->id }}').submit();">
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
+                            <form action="/answers/{{ $answer->id }}/vote" method="POST" id="down-vote-answer-{{ $answer->id }}">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
                             @can('accept', $answer)
                                 <a title="Mark this question as best answer" 
                                     class="{{ $answer->status }} mt-2"

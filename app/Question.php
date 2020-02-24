@@ -26,7 +26,7 @@ class Question extends Model
 
     public function votes()
     {
-        return $this->morphToMany(User::class, 'votables');
+        return $this->morphToMany(User::class, 'votable');
     }
 
     public function setTitleAttribute($value)
