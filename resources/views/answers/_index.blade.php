@@ -31,22 +31,10 @@
                                 @csrf
                                 <input type="hidden" name="vote" value="-1">
                             </form>
-                            @can('accept', $answer)
-                                <a title="Mark this question as best answer" 
-                                    class="{{ $answer->status }} mt-2"
-                                    onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();">
-                                <i class="fa fa-check fa-2x"></i>
-                                </a>
-                                <form action="{{ route('answer.accept', $answer->id) }}" method="POST" id="accept-answer-{{ $answer->id }}">
-                                    @csrf
-                                </form>
-                            @else    
-                                @if ($answer->is_best) 
-                                    <a title="Mark this question as best answer" class="{{ $answer->status }} mt-2">
-                                        <i class="fa fa-check fa-2x"></i>
-                                    </a>
-                                @endif
-                            @endcan
+                            
+                            @include('shared._accept', [
+                                'model' => $answer
+                            ])
                         </div>
                         <div class="media-body">
                             {!! $answer->body_html !!}
@@ -68,15 +56,10 @@
                                 </div>
                             </div>
                             <div class="float-right">
-                                <span class="text-muted">Answered <strong>{{ $answer->created_date }}</strong></span>
-                                <div class="media mt-2">
-                                    <a href="{{ $answer->user->url }}" class="pr-2">
-                                        <img src="{{ $answer->user->avatar }}">
-                                    </a>
-                                    <div class="media-body mt-1">
-                                        <a href="{{ $answer->user->url }}">{{ $answer->user->name }}</a>
-                                    </div>
-                                </div>
+                                @include('shared._author', [
+                                    'model' => $answer,
+                                    'label' => 'Answered'
+                                ])
                             </div>
                         </div>
                     </div>
